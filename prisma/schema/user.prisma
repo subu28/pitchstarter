@@ -1,0 +1,8 @@
+model Participant {
+  id    Int     @id @default(autoincrement())
+  name  String
+  organization String
+  orgWebsite String?
+  status String
+  result String?
+}
