@@ -5,11 +5,15 @@
 import bodyParser from 'body-parser';
 import express, { type Request, type Response } from 'express';
 
+import meetingPrepV1 from './routes/v1.meetingPrep';
+import { registerWorker } from './connectors/mockQ';
+import { participantResearchWorker } from './workers/participantResearchWorker';
+
 // Create a new express application instance
 const app = express();
 app.use(bodyParser.json());
 
-import meetingPrepV1 from './routes/v1.meetingPrep';
+registerWorker('participant_research', participantResearchWorker);
 
 console.log('Start server');
 

@@ -10,6 +10,7 @@
     "start": "npx prisma db push && npx tsx --env-file=.env  server/index.ts"
   },
   "dependencies": {
+    "@google/genai": "^1.42.0",
     "@prisma/adapter-pg": "^7.4.1",
     "@prisma/client": "^7.4.1",
     "body-parser": "^2.2.2",
