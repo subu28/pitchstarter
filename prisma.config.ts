@@ -6,6 +6,6 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    url: "postgresql://admin:pass123@postgres:5432/pitchstarter",
+    url: `${process.env.DATABASE_URL}`,
   },
 });

@@ -1,0 +1,63 @@
+.participant-table {
+  margin: 10px auto;
+  border: 2px solid green;
+  width: 80%;
+  border-collapse: collapse;
+
+  th {
+    border: 2px solid green;
+    padding: 10px;
+    font-size: 20px;
+  }
+
+  td {
+    border: 2px solid green;
+    padding: 10px
+  }
+
+  .ready-btn {
+    background: green;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+
+    &:hover {
+      background: darkgreen;
+    }
+  }
+}
+
+.notes-modal {
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  overflow-y: auto;
+
+  .close-btn {
+    background: red;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    position: fixed;
+    right: 80px;
+    font-weight: 900;
+
+    &:hover {
+      background: darkred;
+    }
+  }
+
+}

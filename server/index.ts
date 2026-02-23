@@ -1,13 +1,16 @@
-// import { readFile } from 'node:fs/promises';
-// import path from 'node:path';
-// import { dirname } from 'node:path';
-// import { fileURLToPath } from 'node:url';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import bodyParser from 'body-parser';
 import express, { type Request, type Response } from 'express';
 
 import meetingPrepV1 from './routes/v1.meetingPrep';
 import { registerWorker } from './connectors/mockQ';
 import { participantResearchWorker } from './workers/participantResearchWorker';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Create a new express application instance
 const app = express();
@@ -48,17 +51,17 @@ app.get('/v1/health', (_req: Request, res: Response) => {
 // serve the API routes
 app.use('/v1/meeting_prep', meetingPrepV1);
 
-// app.use(
-//   express.static(path.join(__dirname, process.env.frontendDist as string)),
-// );
-// // serve the frontend files
-// app.get('/{*any}', async (_req: Request, res: Response) => {
-//   const file = await readFile(
-//     `${path.join(__dirname, process.env.frontendDist as string)}/index.html`,
-//     'utf8',
-//   );
-//   res.send(file);
-// });
+app.use(
+  express.static(path.join(__dirname, '../frontend/dist')),
+);
+// serve the frontend files
+app.get('/{*any}', async (_req: Request, res: Response) => {
+  const file = await readFile(
+    `${path.join(__dirname, '../frontend/dist')}/index.html`,
+    'utf8',
+  );
+  res.send(file);
+});
 
 // Handle 404 errors
 app.use((req, res) => {
